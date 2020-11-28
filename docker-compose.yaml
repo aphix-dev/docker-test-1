@@ -1,0 +1,25 @@
+version: '3'
+services:
+  product-service:
+    build:
+      context: ./product
+      dockerfile: Dockerfile
+#    image: node
+    volumes:
+      - ./product:/usr/src/app
+    ports:
+      - 5001:80
+    tty: true
+  
+  website:
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+#    image: node
+    volumes:
+      - ./website:/usr/src/app
+    ports:
+      - 5002:80
+    depends_on:
+      - product-service
+    tty: true
