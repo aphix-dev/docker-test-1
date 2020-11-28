@@ -1,32 +1,11 @@
 const { response } = require('express')
 const request = require('request');
-var http = require('http')
-
-var options = {
-    host: "localhost",
-    path: "/",
-    port: 5001,
-    method: 'GET'
-}
-
-var str = ''
-
-callback = (response) => {
-
-    response.on('data', function(chunk) {
-        str += chunk
-    })
-
-    response.on('end', function() {
-        console.log(str)
-    })
-}
 
 const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.send(str)
+    res.send("NO Idea but SOME DATA lol")
 })
 
 const PORT = 5002
