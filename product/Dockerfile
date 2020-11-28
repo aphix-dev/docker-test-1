@@ -1,8 +1,8 @@
-FROM node
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app
+FROM node:12.18.1
+WORKDIR /app
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 RUN npm install
-COPY . /usr/src/app
-EXPOSE 5002
-CMD ["node",  "index.js"]
+COPY . .
+EXPOSE 5001
+CMD [ "node", "." ]
